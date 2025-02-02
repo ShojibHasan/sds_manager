@@ -1,0 +1,12 @@
+{% for hotel in results %}
+    <div>
+        <h2>{{ hotel.hotel_name }}</h2>
+        <img src="{{ hotel.image }}" width="200">
+        <p>Booking.com Price: {{ hotel.booking_price }}</p>
+        <p>Agoda Price: {{ hotel.agoda_price }}</p>
+        <p>Best Price: {{ hotel.best_price }}</p>
+        <p>Rating: {{ hotel.rating }}</p>
+        <a href="{{ hotel.booking_url }}" target="_blank">Book on Booking.com</a>
+        <a href="{{ hotel.agoda_url }}" target="_blank">Book on Agoda</a>
+    </div>
+{% endfor %}

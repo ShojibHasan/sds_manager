@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Price Comparison</title>
+</head>
+<body>
+    <h1>Hotel Price Comparison</h1>
+    <table border="1">
+        <tr>
+            <th>Hotel</th>
+            <th>Image</th>
+            <th>Booking.com Price</th>
+            <th>Agoda Price</th>
+            <th>Rating</th>
+            <th>Links</th>
+        </tr>
+        {% for hotel in hotels %}
+        <tr>
+            <td>{{ hotel.name }}</td>
+            <td><img src="{{ hotel_comparison.image_url }}" width="100"></td>
+            <td>{{ hotel.price_booking|default:"N/A" }}</td>
+            <td>{{ hotel.price_agoda|default:"N/A" }}</td>
+            <td>{{ hotel.rating|default:"N/A" }}</td>
+            <td>
+                <a href="{{ hotel_comparison.booking_url }}" target="_blank">Booking</a> | 
+                <a href="{{ hotel_comparison.agoda_url }}" target="_blank">Agoda</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

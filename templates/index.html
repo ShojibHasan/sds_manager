@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Finder</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        {% if not user.is_authenticated %}
+            <!-- Login & Registration Section -->
+            <div class="auth-section">
+                <h2>Welcome! Please Log In or Register</h2>
+
+                <!-- Login Form -->
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+
+                <h3>Or Register Below</h3>
+
+                <!-- Registration Form -->
+                <form method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" placeholder="Last Name" required>
+                    <input type="password" name="password1" placeholder="Password" required>
+                    <input type="password" name="password2" placeholder="Confirm Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        {% else %}
+            <!-- Search Section (Visible Only After Login) -->
+            <div class="search-section">
+                <h2>Search for Hotels</h2>
+                <form method="GET" action="{% url 'search_results' %}">
+                    <input type="text" name="city" placeholder="Enter City" required>
+                    <input type="number" name="min_price" placeholder="Min Price">
+                    <input type="number" name="max_price" placeholder="Max Price">
+                    <select name="star_rating">
+                        <option value="">Select Star Rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <!-- Logout Button -->
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

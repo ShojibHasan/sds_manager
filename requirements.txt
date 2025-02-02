@@ -1,0 +1,10 @@
+scrapy 
+scrapy-splash
+requests-html
+scrapy-user-agents 
+scrapy-rotating-proxies
+beautifulsoup4
+requests
+psycopg2-binary==2.9.8
+python-decouple==3.8
+celery
