@@ -32,24 +32,29 @@ $ python3 -m venv venv
 $ source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 2. Install Dependencies
+### 2. Clone project 
 ```sh
-$ pip install -r requirements.txt
+$ git clone git@github.com:ShojibHasan/sds_manager.git
 ```
+
 
 ### 3. create .env file and add database configuration as env.example
 
-### 4. Apply Database Migrations
+### 4. Install Dependencies
+```sh
+$ pip install -r requirements.txt
+```
+### 5. Apply Database Migrations
 ```sh
 $ python manage.py migrate
 ```
 
-### 5. Create a Superuser (Optional, for Admin Access)
+### 6. Create a Superuser (Optional, for Admin Access)
 ```sh
 $ python manage.py createsuperuser
 ```
 
-### 6. Run the Development Server
+### 7. Run the Development Server
 ```sh
 $ python manage.py runserver
 ```
